@@ -4,148 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jerobie - Portfolio</title>
-    
+    <link rel="stylesheet" href="style.css">
     <link rel="icon" href="https://media1.giphy.com/media/6wdZAQm2unplu/giphy.gif" type="image/gif">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.4s ease, color 0.4s ease; }
-
-        :root {
-            --bg-main: #0a0a0a;
-            --container-bg: rgba(255, 255, 255, 0.03);
-            --text-main: #ffffff;
-            --text-dim: #a0a0a0;
-            --accent: #ff1744;
-            --border: rgba(255, 255, 255, 0.1);
-            --online: #43e97b;
-        }
-
-        [data-theme="light"] {
-            --bg-main: #f0f2f5;
-            --container-bg: rgba(255, 255, 255, 0.8);
-            --text-main: #1c1e21;
-            --text-dim: #606770;
-            --border: rgba(0, 0, 0, 0.1);
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-main);
-            color: var(--text-main);
-            min-height: 100vh;
-            display: flex; justify-content: center; align-items: center;
-            overflow-x: hidden; position: relative;
-            padding: 40px 0;
-        }
-
-        .reveal { opacity: 0; transform: translateY(20px); }
-
-        .bg-particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
-        .particle { position: absolute; background: var(--accent); border-radius: 50%; opacity: 0.2; animation: floatUp 15s linear infinite; }
-
-        @keyframes floatUp {
-            0% { transform: translateY(110vh) scale(0); opacity: 0; }
-            100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
-        }
-
-        .container {
-            max-width: 440px; width: 90%;
-            background: var(--container-bg);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid var(--border);
-            border-radius: 35px; padding: 40px 25px;
-            text-align: center; 
-            box-shadow: 0 25px 50px rgba(0,0,0,0.3);
-            z-index: 10;
-            animation: containerGlow 5s infinite alternate;
-        }
-
-        @keyframes containerGlow {
-            from { box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
-            to { box-shadow: 0 25px 60px rgba(255, 23, 68, 0.1); }
-        }
-
-        .profile-img-container { position: relative; width: 140px; height: 140px; margin: 0 auto 20px; }
-        .profile-img { 
-            width: 100%; height: 100%; border-radius: 50%; 
-            object-fit: cover; border: 4px solid var(--bg-main); 
-            position: relative; z-index: 5; background: #000;
-        }
-        
-        .glow-ring { 
-            position: absolute; top: -6px; left: -6px; right: -6px; bottom: -6px; 
-            background: linear-gradient(45deg, var(--accent), #00f2fe, var(--accent)); 
-            border-radius: 50%; z-index: 1; animation: rotate 3s linear infinite; 
-        }
-        
-        .status-dot {
-            position: absolute; bottom: 10px; right: 10px;
-            width: 20px; height: 20px; background: var(--online);
-            border: 4px solid var(--bg-main); border-radius: 50%; z-index: 10;
-            box-shadow: 0 0 15px var(--online);
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(67, 233, 123, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(67, 233, 123, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(67, 233, 123, 0); } }
-        @keyframes rotate { 100% { transform: rotate(360deg); } }
-
-        .skill-badge {
-            background: var(--accent); color: white;
-            padding: 6px 18px; border-radius: 50px;
-            font-size: 11px; font-weight: 800; text-transform: uppercase;
-            letter-spacing: 1.5px; display: inline-block; margin-bottom: 15px;
-            box-shadow: 0 4px 10px rgba(255, 23, 68, 0.3);
-        }
-
-        .name { font-size: 32px; font-weight: 900; display: flex; align-items: center; justify-content: center; gap: 8px; letter-spacing: -0.5px; }
-        .verified-check { background: #1877f2; color: white; border-radius: 50%; width: 22px; height: 22px; font-size: 12px; display: flex; align-items: center; justify-content: center; }
-
-        .about-section {
-            background: rgba(255, 255, 255, 0.04);
-            border-radius: 20px; padding: 22px; margin: 25px 0;
-            font-size: 14.5px; line-height: 1.7; color: var(--text-dim);
-            text-align: justify; border: 1px solid var(--border);
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
-        }
-
-        .quote { font-style: italic; color: var(--accent); margin-top: 15px; display: block; text-align: center; font-weight: 700; font-size: 16px; }
-
-        .links-stack { display: flex; flex-direction: column; gap: 14px; margin: 25px 0; }
-        .link-btn { 
-            display: flex; align-items: center; justify-content: center; gap: 10px; 
-            padding: 16px; border-radius: 18px; text-decoration: none; color: white; 
-            font-weight: 800; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        .link-btn:hover { transform: translateY(-3px); filter: brightness(1.2); }
-        
-        .fb { background: #1877f2; box-shadow: 0 5px 15px rgba(24, 119, 242, 0.3); }
-        .tk { background: #000000; box-shadow: 0 5px 15px rgba(0,0,0,0.3); }
-        .qr-trigger { background: var(--text-main); color: var(--bg-main); cursor: pointer; border: none; }
-
-        .top-controls { position: fixed; top: 25px; right: 25px; display: flex; gap: 12px; z-index: 100; }
-        .control-btn { 
-            background: var(--container-bg); border: 1px solid var(--border); 
-            padding: 14px; border-radius: 18px; cursor: pointer; color: var(--text-main); 
-            backdrop-filter: blur(10px); transition: 0.3s;
-        }
-        .control-btn:hover { background: var(--border); transform: rotate(15deg); }
-
-        #qrModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 1000; justify-content: center; align-items: center; flex-direction: column; backdrop-filter: blur(5px); }
-        #qrcode { background: white; padding: 25px; border-radius: 25px; margin-bottom: 20px; }
-
-        .stats-row { display: flex; justify-content: space-around; padding: 25px 0; border-top: 1px solid var(--border); }
-        .stat-box .val { font-size: 24px; font-weight: 900; color: var(--accent); display: block; }
-        .stat-box .lab { font-size: 11px; color: var(--text-dim); text-transform: uppercase; letter-spacing: 1px; }
-
-        #clock { font-size: 26px; font-weight: 900; margin: 20px 0; letter-spacing: 2px; color: var(--text-main); }
-        .player-pill { display: inline-flex; align-items: center; gap: 12px; background: var(--border); padding: 10px 25px; border-radius: 50px; cursor: pointer; transition: 0.3s; }
-        .player-pill:hover { background: rgba(255, 23, 68, 0.2); }
-        
-        .footer { margin-top: 35px; font-size: 11px; color: var(--text-dim); opacity: 0.6; letter-spacing: 0.5px; }
-    </style>
 </head>
 <body>
 
@@ -156,9 +17,18 @@
         <button class="control-btn" onclick="toggleMenu()">☰</button>
     </div>
 
-    <div id="qrModal" onclick="this.style.display='none'">
+    <div id="qrModal" class="modal" onclick="this.style.display='none'">
         <div id="qrcode"></div>
-        <p style="color:white; font-weight:bold; letter-spacing: 1px;">JEROBIE'S DIGITAL CARD</p>
+        <p style="color:white; font-weight:bold; margin-top:15px;">SCAN MY PORTFOLIO</p>
+    </div>
+
+    <div id="redirectModal" class="modal">
+        <div class="modal-content">
+            <h3 style="color:white; margin-bottom:10px;">Jerobie AI</h3>
+            <p style="color:var(--text-dim); font-size:14px;">Create your AI here!</p>
+            <button class="modal-btn" onclick="confirmRedirect()">Proceed to Link</button>
+            <button class="cancel-btn" onclick="closeModal()">Cancel</button>
+        </div>
     </div>
 
     <div class="container">
@@ -172,27 +42,42 @@
 
         <h1 class="name reveal">Jerobie <span class="verified-check">✓</span></h1>
         
+        <div class="meta-info reveal">
+            <span>📍 Philippines</span>
+            <span>•</span>
+            <span>🎂 2000+</span>
+        </div>
+
         <div class="about-section reveal">
-            Jerobie is an IT student and results-driven developer specializing in chatbot development, automation, and AI-assisted systems. With hands-on experience in deploying scalable bots, API integrations, and clean code practices, he focuses on delivering high-quality solutions that provide real-world value.
+            Jerobie is an IT student and results-driven developer specializing in chatbot development, automation, and AI-assisted systems. 
+            
+            <div class="likes-container">
+                <span class="like-tag">#AI</span>
+                <span class="like-tag">#Automation</span>
+                <span class="like-tag">#CleanCode</span>
+                <span class="like-tag">#Development</span>
+            </div>
+            
             <span class="quote">"하나님을 신뢰하라" 🌷</span>
         </div>
 
         <div class="links-stack">
             <a href="https://www.facebook.com/profile.php?id=61560890733272" class="link-btn fb reveal" target="_blank">Connect Facebook</a>
             <a href="https://www.tiktok.com/@tagaipon?_r=1&_t=ZS-93E1Hm6F3ot" class="link-btn tk reveal" target="_blank">Watch TikTok</a>
-            <a href="https://m.me/61560890733272" class="link-btn reveal" style="background:#0084ff; box-shadow: 0 5px 15px rgba(0, 132, 255, 0.3);">Direct Message</a>
+            <a href="https://m.me/61560890733272" class="link-btn reveal" style="background:#0084ff;">Direct Message</a>
             <button class="link-btn qr-trigger reveal" onclick="showQR()">Get Digital QR Card</button>
         </div>
 
         <div class="stats-row reveal">
-            <div class="stat-box"><span class="val">6767</span><span class="lab">Origin Year</span></div>
-            <div class="stat-box"><span class="val">39M</span><span class="lab">Influence</span></div>
+            <div class="stat-box"><span class="val">6767</span><span class="lab">Origin</span></div>
+            <div class="stat-box"><span class="val">PH</span><span class="lab">Location</span></div>
+            <div class="stat-box"><span class="val">39M</span><span class="lab">Reach</span></div>
         </div>
 
         <div id="clock" class="reveal">00:00:00</div>
 
         <div class="player-pill reveal" onclick="handleMusic()">
-            <span id="pState">▶</span> <span style="font-size:11px; font-weight: 800;">SYSTEM AUDIO</span>
+            <span id="pState">▶</span> <span style="font-size:11px; font-weight: 800; margin-left: 5px;">SYSTEM AUDIO</span>
         </div>
 
         <div class="footer reveal">© 2026 Developed By Jerobie laug laug</div>
@@ -200,62 +85,6 @@
 
     <audio id="audio" loop><source src="https://files.catbox.moe/ohqbir.mp3" type="audio/mpeg"></audio>
 
-    <script>
-        const skills = ["AI Architect", "Bot Developer", "IT Specialist", "Automation Pro", "UI Designer"];
-        document.getElementById('skillBadge').innerText = skills[Math.floor(Math.random() * skills.length)];
-
-        window.onload = () => {
-            document.querySelectorAll('.reveal').forEach((el, i) => {
-                setTimeout(() => {
-                    el.style.opacity = "1";
-                    el.style.transform = "translateY(0)";
-                    el.style.transition = "all 0.8s cubic-bezier(0.2, 1, 0.3, 1)";
-                }, i * 120);
-            });
-        };
-
-        function showQR() {
-            document.getElementById('qrModal').style.display = 'flex';
-            document.getElementById('qrcode').innerHTML = "";
-            new QRCode(document.getElementById("qrcode"), { text: window.location.href, width: 200, height: 200 });
-        }
-
-        function toggleTheme() {
-            const body = document.body;
-            const btn = document.getElementById('themeBtn');
-            if (body.getAttribute('data-theme') === 'light') {
-                body.removeAttribute('data-theme');
-                btn.innerText = '☀️';
-            } else {
-                body.setAttribute('data-theme', 'light');
-                btn.innerText = '🌙';
-            }
-        }
-
-        const partContainer = document.getElementById('particles');
-        for (let i = 0; i < 25; i++) {
-            const p = document.createElement('div');
-            p.className = 'particle';
-            p.style.width = p.style.height = Math.random() * 5 + 2 + 'px';
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.animationDelay = Math.random() * 10 + 's';
-            partContainer.appendChild(p);
-        }
-
-        setInterval(() => {
-            const now = new Date();
-            document.getElementById('clock').innerText = now.toLocaleTimeString('en-US', { hour12: false, timeZone: 'Asia/Manila' });
-        }, 1000);
-
-        const track = document.getElementById('audio');
-        function handleMusic() {
-            if (track.paused) { track.play(); document.getElementById('pState').innerText = '⏸'; }
-            else { track.pause(); document.getElementById('pState').innerText = '▶'; }
-        }
-        
-        function toggleMenu() {
-            window.open('https://blesa123-bot.onrender.com/', '_blank');
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
