@@ -2,92 +2,131 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Jerobie - Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jerobie Laug Laug | Portfolio Pro</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="dark-mode">
+    <div class="background-glow"></div>
+    
+    <nav>
+        <div class="nav-left">
+            <span class="logo">Jerobie.dev</span>
+        </div>
+        <div class="nav-right">
+            <button id="dots-btn" class="nav-btn" title="Options"><i class="fas fa-ellipsis"></i></button>
+            <button id="theme-toggle" class="nav-btn" title="Toggle Theme"><i class="fas fa-sun"></i></button>
+            <button id="menu-btn" class="nav-btn" title="Menu"><i class="fas fa-bars"></i></button>
+        </div>
+    </nav>
 
-    <div id="notification-area" class="notification-container"></div>
-    <div class="bg-particles" id="particles"></div>
-
-    <div class="header-nav">
-        <button class="nav-icon" onclick="showWelcomeMsg()">🔔</button>
-        <button class="nav-icon" onclick="toggleTheme()" id="themeBtn">☀️</button>
-        <button class="nav-icon" onclick="toggleMenu()">☰</button>
+    <!-- Sidebar/Menu Overlay -->
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-content">
+            <button id="close-sidebar" class="close-btn">&times;</button>
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="https://blesa123-bot.onrender.com" target="_blank" class="ai-link"><i class="fas fa-robot"></i> Create Your Own AI</a></li>
+                <li><a href="#"><i class="fas fa-user"></i> About Me</a></li>
+                <li><a href="#"><i class="fas fa-code"></i> Projects</a></li>
+                <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+        </div>
     </div>
 
-    <div class="content-container">
-        <div class="profile-card glass">
-            <div class="profile-frame">
-                <div class="glow-border"></div>
-                <img src="https://media1.giphy.com/media/6wdZAQm2unplu/giphy.gif" class="avatar" alt="Jerobie">
-                <div class="online-indicator"></div>
-            </div>
-
-            <div class="dev-badge">IT STUDENT & PRO DEV</div>
-            <h1 class="main-name">Jerobie <span class="check-mark">✓</span></h1>
-            
-            <div class="meta-row">
-                <span>📍 Philippines</span> • <span>🎂 2000+</span> • <span id="batteryStatus">🔋 --%</span>
-            </div>
-
-            <div class="description-box">
-                <p>Jerobie is a dedicated IT student and a results-driven developer with a deep passion for <strong>Artificial Intelligence</strong> and <strong>Automation Systems</strong>.</p>
-                <p>He specializes in architecting scalable chatbots, streamlining complex workflows, and maintaining high-efficiency codebases.</p>
-                
-                <div class="skill-tags">
-                    <span>#AI_Architect</span>
-                    <span>#Chatbot_Pro</span>
-                    <span>#Automation</span>
-                    <span>#UI_UX</span>
+    <main>
+        <section class="profile-section reveal">
+            <div class="profile-wrapper">
+                <div class="profile-img-container">
+                    <img src="https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUydzJja3c2ZDVodTVuajZsNjYyMmlyMjJhNzFrdDM4cHZ1Zjk0cXM3cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/eJ1U3jkPwvnGTcTiRz/200w.gif" alt="Jerobie Goku GIF" class="profile-img">
                 </div>
-                <div class="korean-quote">"하나님을 신뢰하라" 🌷</div>
+                <div class="status-dot"></div>
+            </div>
+            
+            <div class="name-container">
+                <h1>Jerobie Laug Laug <i class="fas fa-check-circle verified-icon"></i></h1>
+                <p class="subtitle">FULL-STACK DEVELOPER & UI DESIGNER</p>
+            </div>
+            
+            <p class="quote">"The best error message is the one that never shows up."</p>
+        </section>
+
+        <section class="social-links reveal">
+            <a href="https://github.com/carl21pro" target="_blank" class="social-icon github" title="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=61575863054623" target="_blank" class="social-icon facebook" title="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.tiktok.com/@tagaipon" target="_blank" class="social-icon tiktok" title="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" class="social-icon discord" title="Discord"><i class="fab fa-discord"></i></a>
+            <a href="#" class="social-icon spotify" title="Spotify"><i class="fab fa-spotify"></i></a>
+        </section>
+
+        <section class="stats-container reveal">
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-rocket"></i></div>
+                <h2>105</h2>
+                <p>PROJECTS</p>
+            </div>
+            <div class="stat-card highlight">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <h2>300k</h2>
+                <p>FOLLOWERS</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"><i class="fas fa-code-branch"></i></div>
+                <h2>2+</h2>
+                <p>YEARS EXP</p>
+            </div>
+        </section>
+
+        <section class="info-grid reveal">
+            <div class="info-card glass">
+                <div class="card-icon"><i class="far fa-clock"></i></div>
+                <div class="card-text">
+                    <p class="card-label">LOCAL TIME (GMT+8)</p>
+                    <h3 id="local-time">--:--:-- --</h3>
+                    <p id="local-date">---, --- --, ----</p>
+                </div>
+                <div class="card-status-badge">150ms <span class="pulse"></span></div>
             </div>
 
-            <div class="action-stack">
-                <a href="https://www.facebook.com/profile.php?id=61560890733272" class="action-btn fb-color" target="_blank">Connect Facebook</a>
-                <a href="https://www.tiktok.com/@tagaipon?_r=1&_t=ZS-93E1Hm6F3ot" class="action-btn tk-color" target="_blank">Follow My TikTok</a>
-                <a href="https://m.me/61560890733272" class="action-btn msg-color" target="_blank">Direct Message</a>
-                <button class="action-btn qr-color" onclick="showQR()">Get Digital QR Card</button>
+            <div class="info-card glass">
+                <div class="card-icon"><i class="fas fa-bolt"></i></div>
+                <div class="card-text">
+                    <p class="card-label">DEVICE STATUS</p>
+                    <div class="battery-wrapper">
+                        <div class="battery-container">
+                            <div id="battery-level"></div>
+                        </div>
+                        <span id="battery-percent">--%</span>
+                    </div>
+                    <p id="battery-status">Detecting...</p>
+                </div>
             </div>
+        </section>
 
-            <div class="stats-footer">
-                <div class="stat-item"><strong>6767</strong><span>ORIGIN</span></div>
-                <div class="stat-item"><strong>PH</strong><span>LOCATION</span></div>
-                <div class="stat-item"><strong>39M</strong><span>REACH</span></div>
+        <section class="tech-stack reveal">
+            <p class="section-title">TECH STACK & TOOLS</p>
+            <div class="tags">
+                <span class="tag"><i class="fab fa-js"></i> JavaScript</span>
+                <span class="tag"><i class="fab fa-react"></i> React</span>
+                <span class="tag"><i class="fab fa-python"></i> Python</span>
+                <span class="tag"><i class="fab fa-node-js"></i> Node.js</span>
+                <span class="tag"><i class="fab fa-html5"></i> HTML/CSS</span>
+                <span class="tag"><i class="fab fa-figma"></i> Figma</span>
+                <span class="tag"><i class="fab fa-git-alt"></i> Git</span>
+                <span class="tag"><i class="fas fa-code"></i> VS Code</span>
+                <span class="tag"><i class="fas fa-gamepad"></i> Roblox/Lua</span>
             </div>
+        </section>
+    </main>
 
-            <div id="digitalClock">00:00:00</div>
+    <footer class="reveal">
+        <p>&copy; 2026 Jerobie Laug Laug. Built with ❤️</p>
+    </footer>
 
-            <button class="music-pill" onclick="handleMusic()">
-                <span id="pState">▶</span> SYSTEM AUDIO
-            </button>
-
-            <div class="rgb-signature">© 2026 Developed By Jerobie laug laug</div>
-        </div>
-    </div>
-
-    <div id="aiModal" class="modal-bg" onclick="closeModal()">
-        <div class="modal-inner glass" onclick="event.stopPropagation()">
-            <h3>Jerobie AI</h3>
-            <p>Ready to build? Click below to visit my AI platform!</p>
-            <div class="modal-footer">
-                <a href="https://blesa123-bot.onrender.com/" class="modal-confirm" target="_blank">Visit AI Website</a>
-                <button class="modal-cancel" onclick="closeModal()">Cancel</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="qrModal" class="modal-bg" onclick="this.style.display='none'">
-        <div class="modal-inner glass">
-            <div id="qrcode"></div>
-            <p style="margin-top:15px; font-weight:bold;">SCAN MY PORTFOLIO</p>
-        </div>
-    </div>
-
-    <audio id="bgAudio" loop><source src="https://files.catbox.moe/ohqbir.mp3" type="audio/mpeg"></audio>
     <script src="script.js"></script>
 </body>
 </html>
