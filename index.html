@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jerobie Laug Laug | Portfolio Pro</title>
+    <title>Jerobie Laug Laug | Portfolio Elite</title>
     <link rel="stylesheet" href="style.css">
     <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,7 +11,11 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="dark-mode">
+    <!-- Premium Elements -->
+    <div id="custom-cursor"></div>
+    <div id="cursor-dot"></div>
     <div class="background-glow"></div>
+    <canvas id="particles-canvas"></canvas>
     
     <nav>
         <div class="nav-left">
@@ -19,7 +23,7 @@
         </div>
         <div class="nav-right">
             <button id="dots-btn" class="nav-btn" title="Options"><i class="fas fa-ellipsis"></i></button>
-            <button id="theme-toggle" class="nav-btn" title="Toggle Theme"><i class="fas fa-sun"></i></button>
+            <button id="theme-toggle" class="nav-btn" title="Toggle Theme"><i class="fas fa-moon"></i></button>
             <button id="menu-btn" class="nav-btn" title="Menu"><i class="fas fa-bars"></i></button>
         </div>
     </nav>
@@ -28,13 +32,25 @@
     <div id="sidebar" class="sidebar">
         <div class="sidebar-content">
             <button id="close-sidebar" class="close-btn">&times;</button>
-            <h3>Quick Links</h3>
+            <h3>Navigation</h3>
             <ul>
-                <li><a href="https://blesa123-bot.onrender.com" target="_blank" class="ai-link"><i class="fas fa-robot"></i> Create Your Own AI</a></li>
-                <li><a href="#"><i class="fas fa-user"></i> About Me</a></li>
-                <li><a href="#"><i class="fas fa-code"></i> Projects</a></li>
-                <li><a href="#"><i class="fas fa-envelope"></i> Contact</a></li>
+                <li><a href="https://blesa123-bot.onrender.com" target="_blank" class="special-link"><i class="fas fa-robot"></i> Create Your Own AI</a></li>
+                <li><a href="https://assist-vision-ai.vercel.app/" target="_blank" class="special-link"><i class="fas fa-eye"></i> Assist Vision AI (Project)</a></li>
+                <li><a href="javascript:void(0)" id="about-me-link"><i class="fas fa-user"></i> About Me</a></li>
+                <li><a href="#"><i class="fas fa-code"></i> All Projects</a></li>
+                <li><a href="mailto:lolusuwywge@gmail.com"><i class="fas fa-envelope"></i> Contact Me (Gmail)</a></li>
             </ul>
+        </div>
+    </div>
+
+    <!-- About Me Modal -->
+    <div id="about-modal" class="modal">
+        <div class="modal-content glass">
+            <span class="close-modal">&times;</span>
+            <h2>About Me</h2>
+            <div class="about-text">
+                <p>I am a dedicated Full-Stack Developer and UI Designer with a profound passion for architecting seamless digital experiences. With over two years of rigorous experience in the industry, I specialize in bridging the gap between complex backend logic and intuitive frontend aesthetics. My technical philosophy is centered on the pursuit of "error-less" code, ensuring that every deployment is as robust as it is visually compelling. I am constantly exploring the frontiers of Artificial Intelligence and automation to deliver innovative solutions that address real-world challenges. Beyond technical proficiency, I am committed to continuous learning and the refinement of my craft to maintain a competitive edge in the rapidly evolving technological landscape. My objective is to contribute to high-impact projects that redefine the standards of modern web development.</p>
+            </div>
         </div>
     </div>
 
@@ -42,7 +58,7 @@
         <section class="profile-section reveal">
             <div class="profile-wrapper">
                 <div class="profile-img-container">
-                    <img src="https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUydzJja3c2ZDVodTVuajZsNjYyMmlyMjJhNzFrdDM4cHZ1Zjk0cXM3cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/eJ1U3jkPwvnGTcTiRz/200w.gif" alt="Jerobie Goku GIF" class="profile-img">
+                    <img src="https://media0.giphy.com/media/v1.Y2lkPTZjMDliOTUydzJja3c2ZDVodTVuajZsNjYyMmlyMjJhNzFrdDM4cHZ1Zjk0cXM3cSZlcD12MV9naWZzX3NlYXJjaCZjdD1n%2FeJ1U3jkPwvnGTcTiRz%2F200w.gif" alt="Jerobie Goku GIF" class="profile-img">
                 </div>
                 <div class="status-dot"></div>
             </div>
@@ -52,7 +68,7 @@
                 <p class="subtitle">FULL-STACK DEVELOPER & UI DESIGNER</p>
             </div>
             
-            <p class="quote">"The best error message is the one that never shows up."</p>
+            <p class="quote"><span id="typing-text"></span><span class="cursor-blink">|</span></p>
         </section>
 
         <section class="social-links reveal">
@@ -64,17 +80,17 @@
         </section>
 
         <section class="stats-container reveal">
-            <div class="stat-card">
+            <div class="stat-card tilt">
                 <div class="stat-icon"><i class="fas fa-rocket"></i></div>
                 <h2>105</h2>
                 <p>PROJECTS</p>
             </div>
-            <div class="stat-card highlight">
+            <div class="stat-card highlight tilt">
                 <div class="stat-icon"><i class="fas fa-users"></i></div>
                 <h2>300k</h2>
                 <p>FOLLOWERS</p>
             </div>
-            <div class="stat-card">
+            <div class="stat-card tilt">
                 <div class="stat-icon"><i class="fas fa-code-branch"></i></div>
                 <h2>2+</h2>
                 <p>YEARS EXP</p>
@@ -82,7 +98,7 @@
         </section>
 
         <section class="info-grid reveal">
-            <div class="info-card glass">
+            <div class="info-card glass tilt">
                 <div class="card-icon"><i class="far fa-clock"></i></div>
                 <div class="card-text">
                     <p class="card-label">LOCAL TIME (GMT+8)</p>
@@ -92,7 +108,7 @@
                 <div class="card-status-badge">150ms <span class="pulse"></span></div>
             </div>
 
-            <div class="info-card glass">
+            <div class="info-card glass tilt">
                 <div class="card-icon"><i class="fas fa-bolt"></i></div>
                 <div class="card-text">
                     <p class="card-label">DEVICE STATUS</p>
